@@ -9,7 +9,7 @@ Installing the app via KAR file in a Apache Karaf
 -------------------------------------------------
 Open the Karaf console and run the following command:
 
-kar:install file:/path/to/feature-generator-0.0.1-SNAPSHOT.kar
+kar:install file:/path/to/kar-generator-1.0.0.kar
 
 
 Modifying properties via Webconsole
