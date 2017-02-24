@@ -1,0 +1,18 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+  http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+  http://www.osgi.org/xmlns/blueprint-ext/v1.1.0 https://svn.apache.org/repos/asf/aries/tags/blueprint-0.3.1/blueprint-core/src/main/resources/org/apache/aries/blueprint/ext/blueprint-ext.xsd  
+  ">
+
+	<reference id="dataService" interface="com.osgi.transporter.model.DataService" />
+	<bean id="producer" class="com.osgi.transporter.producer.ProducerImpl">
+		<argument ref="dataService" />
+	</bean>
+
+	<reference id="sourceListener" availability="optional"
+		activation="eager" interface="com.osgi.transporter.api.source.Source">
+		<reference-listener ref="producer" bind-method="onBindService" />
+	</reference>
+
+</blueprint>

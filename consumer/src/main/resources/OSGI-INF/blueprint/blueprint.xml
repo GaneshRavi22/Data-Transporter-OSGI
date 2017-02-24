@@ -1,0 +1,18 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+  http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+  http://www.osgi.org/xmlns/blueprint-ext/v1.1.0 https://svn.apache.org/repos/asf/aries/tags/blueprint-0.3.1/blueprint-core/src/main/resources/org/apache/aries/blueprint/ext/blueprint-ext.xsd  
+  ">
+
+	<bean id="consumer" class="com.osgi.transporter.consumer.ConsumerImpl" />
+
+	<reference id="sinkListener" availability="optional"
+		activation="eager" interface="com.osgi.transporter.api.sink.Sink">
+		<reference-listener ref="consumer" bind-method="onBindService" />
+	</reference>
+	
+	<service id="consumerService" interface="com.osgi.transporter.api.consumer.Consumer"
+		ref="consumer" />
+
+</blueprint>

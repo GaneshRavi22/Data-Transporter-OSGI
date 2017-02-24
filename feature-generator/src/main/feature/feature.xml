@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="feature-generator">
+    <repository>mvn:org.apache.cxf.karaf/apache-cxf/3.1.5/xml/features</repository>
+	<feature name="feature-generator" description="feature-generator" version="0.0.1.SNAPSHOT">
+        <feature version="3.1.5">cxf-jaxrs</feature>
+		<feature version="4.0.8">http-whiteboard</feature>
+		<feature version="4.0.8">webconsole</feature>
+		<configfile finalname="/etc/com.osgi.transporter.source.cfg">mvn:com.osgi.transporter/producer-api/${pom.version}/cfg</configfile>
+		<configfile finalname="/etc/com.osgi.transporter.sink.cfg">mvn:com.osgi.transporter/consumer-api/${pom.version}/cfg</configfile>
+    </feature>
+</features>

@@ -1,0 +1,28 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+	xsi:schemaLocation="
+  http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+  http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0
+  http://www.osgi.org/xmlns/blueprint-ext/v1.1.0 https://svn.apache.org/repos/asf/aries/tags/blueprint-0.3.1/blueprint-core/src/main/resources/org/apache/aries/blueprint/ext/blueprint-ext.xsd  
+  ">
+  
+  <cm:property-placeholder persistent-id="com.osgi.transporter.sink"
+		update-strategy="reload">
+		<cm:default-properties>
+			<cm:property name="kafkaHostname" value="localhost" />
+			<cm:property name="kafkaPort" value="9092" />
+			<cm:property name="kafkaTopicName" value="test" />
+		</cm:default-properties>
+	</cm:property-placeholder>
+
+	<bean id="kafkaSink" class="com.osgi.transporter.sink.KafkaSink">
+		<argument value="${kafkaHostname}" />
+		<argument value="${kafkaPort}" />
+		<argument value="${kafkaTopicName}" />
+	</bean>
+
+	<service id="sink" interface="com.osgi.transporter.api.sink.Sink"
+		ref="kafkaSink" />
+
+</blueprint>
