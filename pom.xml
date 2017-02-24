@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.osgi.transporter</groupId>
 	<artifactId>data-transporter-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
-
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -22,7 +22,7 @@
 		<module>rest-model</module>
 		<module>rest-server</module>
 		<module>consumer</module>
-		<module>feature-generator</module>
+		<module>kar-generator</module>
 	</modules>
 
 	<build>
